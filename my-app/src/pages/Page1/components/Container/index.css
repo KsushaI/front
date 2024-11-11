@@ -1,0 +1,78 @@
+.custom-card{
+    box-shadow: 0 0 10px #517EB4;
+    border-radius: 12px;
+    background-color: #B9CADE !important;
+  
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 0px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px !important;
+    
+}
+
+
+.image{
+    width: 200px !important; 
+    height: 200px !important;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+
+.visa {
+    border-radius: 12px;
+    background-color: white;
+    height: 42px;
+    width:auto !important;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 !important;
+    padding: 0 !important;
+
+}
+
+.title {
+ color: #1f31a3;
+ font-size: 20px;
+ margin-left: 15px;
+ margin-right: 10px;
+ margin-bottom: 0px;
+}
+
+
+
+.price {
+    color: #FFB400;
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 0px;
+   /* Space between price and button */
+}
+
+.btn {
+    margin-right: 15px;
+    margin-left: 5px;
+    height: 38px;
+    border-radius: 10px !important;
+}
+.card-button{
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid #1f31a3;
+
+    text-decoration: none;
+    color: #1f31a3;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+.card-button:hover {
+    background-color: #1f31a3;
+    color: white;
+}
+

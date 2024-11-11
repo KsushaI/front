@@ -1,0 +1,20 @@
+.nav-link.active {
+    font-weight: bold !important;
+    /* Make the active link bold */
+    color: #3941B8 !important;
+    /* Change the text color of the active link */
+    /* Change the background color of the active link */
+    /* Underline the active link */
+}
+
+.nav-link {
+    color: #3941B8 !important;
+    font-size: 20px !important;
+}
+
+/*
+.navbar {
+    position: absolute;
+    left: 40%;
+    transform: translateX(-50%);
+}*/
