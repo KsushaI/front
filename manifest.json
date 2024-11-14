@@ -8,11 +8,11 @@
     "orientation": "portrait-primary",
     "icons": [
       {
-        "src": "/visa_label_blue.png",
+        "src": "/front/visa_label_blue.png",
         "type": "image/png", "sizes": "192x192"
       },
       {
-        "src": "/visa_label_white.png",
+        "src": "/front/visa_label_white.png",
         "type": "image/png", "sizes": "512x512"
       }
     ]
