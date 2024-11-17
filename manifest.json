@@ -10,10 +10,6 @@
       {
         "src": "/front/visa_label_blue.png",
         "type": "image/png", "sizes": "192x192"
-      },
-      {
-        "src": "/front/visa_label_white.png",
-        "type": "image/png", "sizes": "512x512"
       }
     ]
   }
