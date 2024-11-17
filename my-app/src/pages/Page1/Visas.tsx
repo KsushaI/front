@@ -9,58 +9,33 @@ import { useState, useEffect } from 'react'
 import { ROUTE_LABELS } from "../../Routes";
 import BreadCrumbs from "../components/BreadCrumbs"
 import { useNavigate } from "react-router-dom";
-import {Visa, getVisaByPrice} from '../modules/Api'
-/*
-export interface Card {
-    pk: number;
-    type: string;
-    url: string;
-    price: string;
-}
-export interface VisasResult {
-    //resultCount: number;
-    hello: string;
-    services: Card[];
-    number_of_services: string;
-}
-
-const getVisaByPrice = async (price = ''): Promise<VisasResult> => {
-    return fetch(`http://127.0.0.1:8000/visas_api/?visa_price=${price}`)
-        .then((response) => response.json())
-        //.catch(() => ({  services: [] }))
-        .catch(() =>  {
-            const searchPrice = parseFloat(price);
-        if (isNaN(searchPrice)) {
-            return { services: [] }; 
-        }
-        return {
-            services: VISAS_MOCK.services.filter((item) => {
-                return item.price <= searchPrice; 
-            })
-        };
-    })
-}
-*/
+import { Visa, getVisaByPrice } from '../modules/Api'
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilteredVisas, selectFilteredVisas } from '../../slices/visasSlice';
+import { setSearchValue } from '../../slices/searchSlice';
 
 const Visas = () => {
-    const [searchValue, setSearchValue] = useState('')
 
+    const searchValue = useSelector((state: any) => state.search.value);
     const [loading, setLoading] = useState(false)
 
     const [Visa, setVisa] = useState<Visa[]>([])
-    const [num, setNum] = useState(0);
-
+    //const [num, setNum] = useState(0);
+    const filteredVisas = useSelector(selectFilteredVisas); // Get filtered visas from the store
+    const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    const handleSearch = async () => {
+    const handleSearch = async (event: React.FormEvent) => {
+        event.preventDefault();
         await setLoading(true)
         const { services } = await getVisaByPrice(searchValue)
         await setVisa(services)
+        dispatch(setFilteredVisas(services));
         await setLoading(false)
         console.log(services)
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchVisas = async () => {
             setNum(5);
             setLoading(true);
@@ -69,13 +44,29 @@ const Visas = () => {
             setLoading(false);
         };
         fetchVisas();
-    }, []); 
+    }, []); */
+
+    useEffect(() => {
+        if (filteredVisas.length > 0) {
+            // If there are filtered visas, use them
+            setVisa(filteredVisas);
+        } else {
+            // Otherwise, fetch the default visas
+            const fetchVisas = async () => {
+                setLoading(true);
+                const { services } = await getVisaByPrice();
+                setVisa(services);
+                dispatch(setFilteredVisas(services)); // Save to Redux
+                setLoading(false);
+            };
+            fetchVisas();
+        }
+    }, [filteredVisas, dispatch]); // Add dependencies
 
     return (
         <>
             <Header />
             <BreadCrumbs crumbs={[{ label: ROUTE_LABELS.VISAS }]} />
-            <p>{num}</p>
             <div className="form-container">
                 <Form>
                     <Row className="row">
@@ -85,7 +76,7 @@ const Visas = () => {
                                 //name="visa_price"
                                 placeholder="Поиск по цене"
                                 value={searchValue}
-                                onChange={(event => setSearchValue(event.target.value))}
+                                onChange={(event) => dispatch(setSearchValue(event.target.value))}
                                 className=" mr-sm-2"
                             //
                             />

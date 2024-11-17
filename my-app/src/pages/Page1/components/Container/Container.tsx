@@ -38,7 +38,7 @@ const Container: FC<Props> = ({ Visa , navigate}) => {
                 <Card key={index} className="custom-card">
                     
                         {/*{`/details/${visa.id}`}*/}
-                    <Card.Img variant="top" className="image" src={visa.url || "http://localhost:9000/test/default_.png" || "public/default_2.png"} onClick={() => handleCardClick(visa.pk)}/>
+                    <Card.Img variant="top" className="image" src={"/front/"+visa.url || "http://localhost:9000/test/default_.png" || "public/default_2.png"} onClick={() => handleCardClick(visa.pk)}/>
             
                     <Card.Body> <div className="visa"><p className="title">{visa.type}</p>
                         <p className="price">{visa.price}</p>

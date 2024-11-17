@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ROUTES } from '../../../Routes'
@@ -22,7 +22,7 @@ const Navbar2 = () => {
                     to={ROUTES.HOME}
                     className={({ isActive }) => (isActive ? "navbar2 nav-link active" : "navbar2 nav-link")}
                 >
-                    <img className="visa_picture" src="/front/public/visa_label_white.png"/>Визовый центр РФ
+                    <img className="visa_picture" src="/front/visa_label_white.png"/>Визовый центр РФ
                 </NavLink>
             </Nav.Item>
 
