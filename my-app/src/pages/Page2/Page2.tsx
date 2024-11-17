@@ -58,12 +58,12 @@ function Page2() {
             </ul>
             <h1>Стоимость оформления</h1>
             <div className="price_line">
-              <p>от</p><p className="price2">от {visa.price} р</p><p>по запросу</p>
+              <p>от</p><p className="price2">{visa.price} р</p><p>по запросу</p>
             </div>
 
           </div>
         </div>
-        <img src={visa.url || "http://localhost:9000/test/default_.png"} alt="картинка к визе" className="image2"/>
+        <img src={ "/front/" + visa.url || "http://localhost:9000/test/default_.png" } alt="картинка к визе" className="image2"/>
       </div>
     </>
   );

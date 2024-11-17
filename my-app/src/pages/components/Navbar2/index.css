@@ -1,13 +1,22 @@
 .navbar2 .nav-link.active {
-    font-weight: bold !important;
-    /* Make the active link bold */
+    font-weight: lighter !important;
     color: #ffffff !important;
-    /* Change the text color of the active link */
-    /* Change the background color of the active link */
-    /* Underline the active link */
 }
 
 .navbar2 .nav-link {
     color: #ffffff !important;
     font-size: 20px !important;
+}
+
+
+@media (max-width: 400px) {
+    .navbar2 .nav-link {
+        padding: 0 !important;
+        padding-right: 6px !important;
+    }
+}
+
+
+.navbar2 {
+    align-items: center;
 }

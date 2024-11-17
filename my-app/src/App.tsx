@@ -7,7 +7,7 @@ import { ROUTES } from "./Routes.tsx";
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/front">
     <Routes>
       <Route path={ROUTES.HOME} index element={<HomePage />} />
       <Route path={ROUTES.VISAS} element={<Page1 />} />

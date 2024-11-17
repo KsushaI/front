@@ -4,6 +4,14 @@
     margin-left: 30px;
 }
 
+@media (max-width: 450px) {
+    .visa_picture {
+        height: 80px !important;
+        object-fit: cover;
+        margin-left: 0 !important;
+    }
+}
+
 .visa_label {
     /*display: flex;*/
     flex: 0 0 auto;
@@ -32,11 +40,13 @@
     border-bottom: 2px solid #3941B8;
 }
 
+/*
 .navbar-container {
-    flex-grow: 1; /* Allow this to grow and take up space */
-    display: flex; /* Use flex to center the navbar */
-    justify-content: center; /* Center the navbar */
-    position: absolute; /* Position it absolutely to center it */
-    left: 50%; /* Move to the center */
-    transform: translateX(-50%); /* Center it horizontally */
+    flex-grow: 1; 
+    display: flex; 
+    justify-content: center; 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
+*/

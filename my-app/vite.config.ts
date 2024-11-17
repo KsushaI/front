@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import fs from 'fs';
+import path from 'path';
 
 // https://vite.dev/config/
 /*export default defineConfig({
@@ -9,13 +11,20 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: "/front",  
   server: {
+    /*
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'C:/Users/Ksu/Documents/certs/localhost+1-key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'C:/Users/Ksu/Documents/certs/localhost+1.pem')),
+    },*/
     proxy: {
       "/visas_api": {
-        target: "http://localhost:8080",
+        target: "http://localhost:8000",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/visas_api/, "/"),
       },
     },
+    port: 3000,
+    host: '0.0.0.0'
   },
 });

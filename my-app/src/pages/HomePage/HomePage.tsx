@@ -1,9 +1,7 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../Page1/components/Header'
-import { ROUTE_LABELS } from "../../Routes";
-import BreadCrumbs from "../components/BreadCrumbs";
+
 import './index.css'
 
 const HomePage: FC = () => {

@@ -6,11 +6,10 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState, useEffect } from 'react'
-import { ROUTES, ROUTE_LABELS } from "../../Routes";
+import { ROUTE_LABELS } from "../../Routes";
 import BreadCrumbs from "../components/BreadCrumbs"
 import { useNavigate } from "react-router-dom";
-import {Visa, VisasResult, getVisaByPrice} from '../modules/Api'
-import { VISAS_MOCK } from "../modules/mock";
+import {Visa, getVisaByPrice} from '../modules/Api'
 /*
 export interface Card {
     pk: number;
@@ -49,6 +48,7 @@ const Visas = () => {
     const [loading, setLoading] = useState(false)
 
     const [Visa, setVisa] = useState<Visa[]>([])
+    const [num, setNum] = useState(0);
 
     const navigate = useNavigate()
 
@@ -62,21 +62,23 @@ const Visas = () => {
 
     useEffect(() => {
         const fetchVisas = async () => {
+            setNum(5);
             setLoading(true);
-            const { services } = await getVisaByPrice(); // Fetch all visas without price filter
+            const { services } = await getVisaByPrice(); 
             setVisa(services);
             setLoading(false);
         };
         fetchVisas();
-    }, []); // Empty dependency array to run only once on mount
+    }, []); 
 
     return (
         <>
             <Header />
             <BreadCrumbs crumbs={[{ label: ROUTE_LABELS.VISAS }]} />
+            <p>{num}</p>
             <div className="form-container">
                 <Form>
-                    <Row>
+                    <Row className="row">
                         <Col xs="auto">
                             <Form.Control
                                 type="text"

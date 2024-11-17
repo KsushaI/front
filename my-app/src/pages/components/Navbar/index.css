@@ -10,8 +10,17 @@
 .nav-link {
     color: #3941B8 !important;
     font-size: 20px !important;
+    
 }
 
+
+
+@media (max-width: 400px) {
+    .nav-link {
+        padding: 0 !important;
+        padding-right: 6px !important;
+    }
+}
 /*
 .navbar {
     position: absolute;
