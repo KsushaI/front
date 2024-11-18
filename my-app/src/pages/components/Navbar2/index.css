@@ -20,3 +20,115 @@
 .navbar2 {
     align-items: center;
 }
+
+.nav__mobile-wrapper2 {
+    display: none;
+    height: 30px;
+    width: 38px;
+    transition: all .4s linear;
+    cursor: pointer;
+    position: relative;
+    padding-left: 15px; 
+}
+
+.nav__mobile-target2 {
+    height: 2px;
+    width: 100%;
+    background-color: #ffffff ;
+    position: relative;
+    transition: all .2s linear;
+}
+
+.nav__mobile-wrapper2.active .nav__mobile-target2 {
+    transform: rotate(45deg)
+}
+
+.nav__mobile-target2::after, .nav__mobile-target2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.nav__mobile-target2::after {
+    top: -7px;
+}
+
+.nav__mobile-target2::before {
+    bottom: -7px;
+}
+
+.nav__mobile-wrapper2.active .nav__mobile-target2::after {
+    display: none;
+}
+
+.nav__mobile-wrapper2.active .nav__mobile-target2::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.nav__mobile-menu2 {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    flex-direction: column;
+    gap: 15px 0;
+    background-color: #2d4b9e;
+    padding: 10px;
+    min-width: 160px;
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+}
+
+.nav__mobile-wrapper2.active .nav__mobile-menu2 {
+    display: flex;
+}
+
+@media (max-width: 545px) {
+    .nav__wrapper2 {
+        flex-direction: row-reverse;
+    }
+    .nav-link {
+        padding: 0 !important;
+
+    }
+
+    .nav-link-container {
+        display: none;
+    }
+    .nav__links2 {
+        display: none;
+    }
+
+    .nav__mobile-wrapper2 {
+        display: flex;
+        align-items: center;
+
+    }
+}
+
+/* Style for links inside the mobile menu */
+.nav__mobile-menu2 .nav__link2 {
+    color: #ffffff; /* Change link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Set font size */
+    padding: 10px 15px; /* Add padding for better click area */
+    display: block; /* Make links block elements for full width */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+
+/* Hover effect for links 
+.nav__mobile-menu .nav__link:hover {
+    background-color: #3941B8; 
+    color: #ffffff; 
+}
+
+
+.nav__mobile-menu .nav__link.active {
+    font-weight: bold; 
+    color: #FFD700;  
+}*/

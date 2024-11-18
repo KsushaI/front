@@ -18,7 +18,8 @@ const Visas = () => {
 
     const searchValue = useSelector((state: any) => state.search.value);
     const [loading, setLoading] = useState(false)
-
+    const [randomX, setRandomX] = useState(0); // State for the random number x
+    const [exponent, setExponent] = useState(0); // State for exp(x)
     const [Visa, setVisa] = useState<Visa[]>([])
     //const [num, setNum] = useState(0);
     const filteredVisas = useSelector(selectFilteredVisas); // Get filtered visas from the store
@@ -46,6 +47,7 @@ const Visas = () => {
         fetchVisas();
     }, []); */
 
+
     useEffect(() => {
         if (filteredVisas.length > 0) {
             // If there are filtered visas, use them
@@ -61,12 +63,18 @@ const Visas = () => {
             };
             fetchVisas();
         }
-    }, [filteredVisas, dispatch]); // Add dependencies
+
+        const randomNumber = Math.floor(Math.random() * 20); // random number [0,10]
+        setRandomX(randomNumber);
+        setExponent(Math.exp(randomNumber)); //exp(x)
+
+    }, []); 
 
     return (
         <>
             <Header />
             <BreadCrumbs crumbs={[{ label: ROUTE_LABELS.VISAS }]} />
+            <p>Exp({randomX}) = {exponent}</p>
             <div className="form-container">
                 <Form>
                     <Row className="row">
@@ -95,6 +103,7 @@ const Visas = () => {
                         <div>
                             <h1 className="not-found">К сожалению, пока ничего не найдено :(</h1>
                         </div>) : (
+                      
                         <div className='custom-container'><Container Visa={Visa} navigate={navigate} /></div>
                     )
                     )}

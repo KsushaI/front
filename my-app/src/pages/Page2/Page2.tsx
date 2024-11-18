@@ -63,7 +63,7 @@ function Page2() {
 
           </div>
         </div>
-        <img src={ "/front/" + visa.url || "http://localhost:9000/test/default_.png" } alt="картинка к визе" className="image2"/>
+        <img src={ visa.url || "http://localhost:9000/test/default_.png" } alt="картинка к визе" className="image2"/>
       </div>
     </>
   );

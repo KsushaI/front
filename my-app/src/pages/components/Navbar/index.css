@@ -14,7 +14,7 @@
 }
 
 
-
+/*
 @media (max-width: 400px) {
     .nav-link {
         padding: 0 !important;
@@ -26,4 +26,116 @@
     position: absolute;
     left: 40%;
     transform: translateX(-50%);
+}*/
+
+.nav__mobile-wrapper {
+    display: none;
+    height: 30px;
+    width: 38px;
+    transition: all .4s linear;
+    cursor: pointer;
+    position: relative;
+    padding-left: 15px; 
+}
+
+.nav__mobile-target {
+    height: 2px;
+    width: 100%;
+    background-color: #3941B8 ;
+    position: relative;
+    transition: all .2s linear;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-target {
+    transform: rotate(45deg)
+}
+
+.nav__mobile-target::after, .nav__mobile-target::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #3941B8;
+}
+
+.nav__mobile-target::after {
+    top: -7px;
+}
+
+.nav__mobile-target::before {
+    bottom: -7px;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-target::after {
+    display: none;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-target::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.nav__mobile-menu {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    flex-direction: column;
+    gap: 15px 0;
+    background-color: #d4d4d4;
+    padding: 10px;
+    min-width: 160px;
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+}
+
+.nav__mobile-wrapper.active .nav__mobile-menu {
+    display: flex;
+}
+
+@media (max-width: 545px) {
+    .nav__wrapper {
+        flex-direction: row-reverse;
+    }
+    .nav-link {
+        padding: 0 !important;
+
+    }
+
+    .nav-link-container {
+        display: none;
+    }
+    .nav__links {
+        display: none;
+    }
+
+    .nav__mobile-wrapper {
+        display: flex;
+        align-items: center;
+
+    }
+}
+
+/* Style for links inside the mobile menu */
+.nav__mobile-menu .nav__link {
+    color: #3941B8; /* Change link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Set font size */
+    padding: 10px 15px; /* Add padding for better click area */
+    display: block; /* Make links block elements for full width */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+
+/* Hover effect for links 
+.nav__mobile-menu .nav__link:hover {
+    background-color: #3941B8; 
+    color: #ffffff; 
+}
+
+
+.nav__mobile-menu .nav__link.active {
+    font-weight: bold; 
+    color: #FFD700;  
 }*/

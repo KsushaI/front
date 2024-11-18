@@ -17,6 +17,16 @@ const Navbar2 = () => {
             
             activeKey={activeKey}
         >
+             <div className='nav__mobile-wrapper2'
+                onClick={(event) => event.currentTarget.classList.toggle('active')}
+            >
+                <div className='nav__mobile-target2' />
+                <div className='nav__mobile-menu2'>
+                    <NavLink to={ROUTES.VISAS} className='nav__link2'>Визы</NavLink>
+                    <NavLink to='' className='nav__link2'>Cтраница 3</NavLink>
+                    <NavLink to='' className='nav__link2'>Страница 4</NavLink>
+                </div>
+            </div>
             <Nav.Item>
                 <NavLink
                     to={ROUTES.HOME}
@@ -26,7 +36,7 @@ const Navbar2 = () => {
                 </NavLink>
             </Nav.Item>
 
-            <Nav.Item>
+            <Nav.Item className="nav-link-container">
                 <NavLink
                     to={ROUTES.VISAS}
                     className="navbar2 nav-link"

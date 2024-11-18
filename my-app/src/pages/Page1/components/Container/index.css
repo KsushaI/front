@@ -1,5 +1,6 @@
 .custom-card{
     flex: 1 1 250px;
+    max-width: 300px;
     box-shadow: 0 0 10px #517EB4;
     border-radius: 12px;
     background-color: #B9CADE !important;

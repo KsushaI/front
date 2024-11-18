@@ -79,4 +79,33 @@ button:focus-visible {
 .welcome h1 {
   color: #1e2259;
   font-weight: bold;
+  font-size: 2.5rem; 
+}
+
+.welcome h2 {
+  font-size: 1.5rem; /* Adjust size for larger screens */
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .welcome h1 {
+      font-size: 1.8rem; /* Smaller size for mobile */
+  }
+  
+  .welcome h2 {
+      font-size: 1.2rem; /* Smaller size for mobile */
+  }
+
+  .carousel img {
+    border-radius: 0px !important;
+    height: 250px !important;
+    width: 100% !important; 
+  }
+
+}
+
+.carousel img {
+  height: 500px; /* Optional: set a max height for images */
+  object-fit: cover;
+  border-radius: 12px; /* Ensure images cover the area without stretching */
 }
