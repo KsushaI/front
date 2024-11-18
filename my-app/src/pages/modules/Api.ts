@@ -14,6 +14,7 @@ export interface VisasResult {
 
 
 export const getVisaByPrice = async (price = ''): Promise<VisasResult> => {
+  
   return fetch(`http://192.168.0.102:8000/visas_api/?visa_price=${price}`)
     .then((response) => response.json())
     //.catch(() => ({ /*resultCount:0,*/ services: [] }))
@@ -37,6 +38,7 @@ export const getVisaByPrice = async (price = ''): Promise<VisasResult> => {
 export const getVisaById = async (
   id: number | string
 ): Promise<Visa> => {
+  
   return fetch(`http://192.168.0.102:8000/visas_api/${id}`).then(
     (response) => response.json())
     .catch(() => { 
