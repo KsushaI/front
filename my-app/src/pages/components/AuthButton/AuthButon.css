@@ -1,0 +1,31 @@
+.reg-btn {
+    margin-left: 10px !important; /* Padding for the button */ /* Button background color */
+    color: white !important;
+    background-color: #ffc107  !important;
+    font-size: 18px !important; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 10px !important; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor to pointer */
+    
+}
+
+.reg-btn:hover {
+    color: #ffc107 !important;
+    background-color: white !important;
+    border: 1px solid  #ffc107 !important;
+}
+
+.linky {
+    margin-right: 100px !important;
+}
+
+.right-part {
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100px !important;
+}
+
+.clickable {
+    cursor: pointer !important; /* Change cursor to pointer */
+}
+

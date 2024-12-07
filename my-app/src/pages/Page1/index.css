@@ -28,9 +28,9 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 30px;
-    padding-left: 90px !important;  /* Убираем отступ слева */
-    padding-right: 90px !important;
+    gap: 20px;
+    padding-left: 30px !important;  /* Убираем отступ слева */
+    padding-right: 30px !important;
 }
 
 @media (max-width: 500px) {
@@ -84,7 +84,7 @@
     font-size: 3.000em;
     margin: 0 0 34px -3px;
     line-height: 1;
-    padding-left: 100px;
+    padding-left: 30px;
 }
 
 .direction {
@@ -93,7 +93,7 @@
     font-size: 2.000em;
     margin: 0 0 34px -3px;
     line-height: 1;
-    padding-left: 100px;
+    padding-left: 30px;
 }
 
 .not-found {
@@ -119,4 +119,33 @@
 .form-control {
     color: rgb(125, 125, 125) !important;
     border: var(--bs-border-width) solid #ffc107 !important; 
+}
+
+.trolly-btn {
+    padding: 10px; /* Padding for the button */ /* Button background color */
+    color: white !important;
+    font-size: 18px !important; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 10px !important; /* Rounded corners for the button */
+    cursor: pointer; /* Change cursor to pointer */
+    position: absolute; /* Position the button absolutely */
+    right: 142px; /* Align button to the right edge of the viewport */
+    top: 198px; /* Adjust top position as needed */
+}
+
+span {
+    background-color: #1f31a3;
+    color: white;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 15px;
+    margin-left: 10px;
+}
+
+.trolly-btn:hover {
+    color: #ffc107 !important;
+    background-color: white !important;
+    border: 1px solid  #ffc107 !important;
 }

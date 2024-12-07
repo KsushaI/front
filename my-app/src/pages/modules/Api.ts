@@ -5,6 +5,9 @@ export interface Visa {
   type: string;
   price: number;
   url: string;
+  //status: string; // Added to reflect the response
+  //description: string | null; // Can be null
+  //creator: string | null; // Can be null
 }
 export interface VisasResult {
   user_draft_app_id: number | null;
@@ -15,7 +18,7 @@ export interface VisasResult {
 
 export const getVisaByPrice = async (price = ''): Promise<VisasResult> => {
   
-  return fetch(`http://192.168.0.102:8000/visas_api/?visa_price=${price}`)
+  return fetch(`http://localhost:4000/visas_api/?visa_price=${price}`)
     .then((response) => response.json())
     //.catch(() => ({ /*resultCount:0,*/ services: [] }))
     .catch(() => {
@@ -39,7 +42,7 @@ export const getVisaById = async (
   id: number | string
 ): Promise<Visa> => {
   
-  return fetch(`http://192.168.0.102:8000/visas_api/${id}`).then(
+  return fetch(`http://localhost:4000/visas_api/${id}`).then(
     (response) => response.json())
     .catch(() => { 
       const visa = VISAS_MOCK.services.find((service) => service.pk === Number(id));

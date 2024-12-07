@@ -1,0 +1,8 @@
+.small-container {
+    max-width: 500px; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container */
+  }
+
+.submit-btn {
+    margin-left: 0;
+}

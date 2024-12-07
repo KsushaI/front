@@ -23,8 +23,18 @@ export default defineConfig({
         target: "http://localhost:8000",
         changeOrigin: true,
       },
-    },
-    port: 3000,
+      "/apps_api": 
+      {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
+      "/apps_visas_api": 
+      {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+      },
+    },  
+    port: 4000,
     host: '0.0.0.0'
   },
 });

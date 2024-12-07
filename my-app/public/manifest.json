@@ -1,6 +1,6 @@
 {
-    "name": "Tile Notes",
-    "short_name": "Tile Notes",
+    "name": "Visas App",
+    "short_name": "Visas App",
     "start_url": "/front",
     "display": "standalone",
     "background_color": "#fdfdfd",

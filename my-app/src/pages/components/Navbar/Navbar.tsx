@@ -2,18 +2,21 @@ import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { ROUTES } from '../../../Routes'
 import "./index.css"
 
 const Navbar = () => {
     const location = useLocation();
     const [activeKey, setActiveKey] = useState('/');
+    const { isAuthenticated, user } = useSelector((state: any) => state.auth);
     useEffect(() => {
         setActiveKey(location.pathname);
+        console.log(user?.user_id)
     }, [location]);
     return (
-        
-        
+
+
         <Nav
             className="navbar justify-content-center"
 
@@ -25,10 +28,8 @@ const Navbar = () => {
                 <div className='nav__mobile-target' />
                 <div className='nav__mobile-menu'>
                     <NavLink to={ROUTES.VISAS} className='nav__link'>Визы</NavLink>
-                    <NavLink to='' className='nav__link'>Cтраница 3</NavLink>
-                    <NavLink to='' className='nav__link'>Страница 4</NavLink>
                 </div>
-        </div>
+            </div>
             <Nav.Item >
                 <NavLink
                     to={ROUTES.HOME}
@@ -46,7 +47,28 @@ const Navbar = () => {
                     Визы
                 </NavLink>
             </Nav.Item>
-            
+
+            {isAuthenticated &&
+                <Nav.Item className="nav-link-container">
+                    <NavLink
+                        to={ROUTES.APPS}
+                        className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+                    >
+                        Заявки
+                    </NavLink>
+                </Nav.Item>
+            }
+
+            {isAuthenticated && user?.is_staff && (
+                <Nav.Item className="nav-link-container">
+                    <NavLink
+                        to={ROUTES.SERVICES}
+                        className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+                    >
+                        Услуги
+                    </NavLink>
+                </Nav.Item>
+            )}
         </Nav>
     );
 }

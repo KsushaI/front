@@ -19,7 +19,7 @@ function Page2() {
         console.error("Error fetching visa data:", error);
         // Optionally handle the error state here
       });
-    // Set the body background color when this component mounts
+    // Set theff body background color when this component mounts
     // Reset the body background color when this component unmounts
     return () => {
       document.body.style.background = ''; // Reset to default

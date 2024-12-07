@@ -1,6 +1,7 @@
 import Navbar from "../../../components/Navbar"
-
+import AuthButton from "../../../components/AuthButton"
 import './index.css'
+
 const Header = () => {
     return (
         <div className="header1">
@@ -13,6 +14,7 @@ const Header = () => {
                 </div>
             </div> */}     
             <div className="navbar-container"><Navbar/></div>
+            <AuthButton/>
         </div>
     )
 }

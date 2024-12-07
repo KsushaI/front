@@ -23,8 +23,6 @@ const Navbar2 = () => {
                 <div className='nav__mobile-target2' />
                 <div className='nav__mobile-menu2'>
                     <NavLink to={ROUTES.VISAS} className='nav__link2'>Визы</NavLink>
-                    <NavLink to='' className='nav__link2'>Cтраница 3</NavLink>
-                    <NavLink to='' className='nav__link2'>Страница 4</NavLink>
                 </div>
             </div>
             <Nav.Item>
