@@ -12,8 +12,8 @@ const AppsListPage = () => {
     const { apps } = useSelector((state: RootState) => state.apps);
     const [reload, setReload] = useState(false);
     const [filters, setFilters] = useState({
-        startDate: '',
-        endDate: '',
+        start_date: '',
+        end_date: '',
         status: '',
         creator: ''
     });
@@ -43,8 +43,8 @@ const AppsListPage = () => {
         // Если изменился фильтр создателя, обновляем список заявок
         if (name === 'creator') {
             dispatch(fetchApps({
-                start_date:  updatedFilters.startDate, 
-                end_date: updatedFilters.endDate, 
+                start_date:  updatedFilters.start_date, 
+                end_date: updatedFilters.end_date, 
                 status: filters.status,
                 
             }));
@@ -78,14 +78,14 @@ const AppsListPage = () => {
                 <input
                     type="date"
                     name="startDate"
-                    value={filters.startDate}
-                    onChange={e => setFilters({ ...filters, startDate: e.target.value })}
+                    value={filters.start_date}
+                    onChange={e => setFilters({ ...filters, start_date: e.target.value })}
                 />
                 <input
                     type="date"
                     name="endDate"
-                    value={filters.endDate}
-                    onChange={e => setFilters({ ...filters, endDate: e.target.value })}
+                    value={filters.end_date}
+                    onChange={e => setFilters({ ...filters, end_date: e.target.value })}
                 />
                 <select name="status" value={filters.status} onChange={e => setFilters({ ...filters, status: e.target.value })}>
                     <option value="">Все статусы</option>
