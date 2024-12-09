@@ -8,6 +8,8 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
+
 export interface Visa {
   pk: number;
   type: string;
@@ -183,6 +185,16 @@ export interface UserSerial {
   
 }
 
+interface FetchAppsParams {
+  start_date?: string;
+  end_date?: string;
+  status?: string;
+}
+
+// Extend the existing RequestParams to include FetchAppsParams
+export type ExtendedRequestParams = Omit<RequestParams, 'query'> & {
+  query?: FetchAppsParams; // Add the query property
+};
 
 
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";
@@ -205,7 +217,9 @@ export interface FullRequestParams extends Omit<AxiosRequestConfig, "data" | "pa
   body?: unknown;
 }
 
-export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path">;
+export type RequestParams = Omit<FullRequestParams, "body" | "method" | "query" | "path"> & {
+  body?: unknown; // Add the body property here
+};
 
 export interface ApiConfig<SecurityDataType = unknown> extends Omit<AxiosRequestConfig, "data" | "cancelToken"> {
   securityWorker?: (
@@ -444,7 +458,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request GET:/apps_api/
      * @secure
      */
-    appsApiList: (params: RequestParams = {}) =>
+    appsApiList: (params: ExtendedRequestParams = {}) =>
       this.request<Apps, any>({
         path: `/apps_api/`,
         method: "GET",
@@ -667,8 +681,8 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @secure
      */
     usersList: (params: RequestParams = {}) =>
-      this.request<void, any>({
-        path: `/users/`,
+      this.request<User[], any>({
+        path: `/front/users/`,
         method: "GET",
         secure: true,
         ...params,
@@ -805,6 +819,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         path: `/visas_api/${id}/`,
         method: "PUT",
         secure: true,
+        body: params.body,
         ...params,
       }),
 
@@ -848,12 +863,14 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request POST:/visas_api/{id}/update_pic/
      * @secure
      */
-    visasApiUpdatePicCreate: (id: string, params: RequestParams = {}) =>
+visasApiUpdatePicCreate: (id: string, params: RequestParams = {}) =>
       this.request<void, any>({
         path: `/visas_api/${id}/update_pic/`,
         method: "POST",
         secure: true,
+        body: params.body,
         ...params,
       }),
   };
 }
+

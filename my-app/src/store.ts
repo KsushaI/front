@@ -4,6 +4,9 @@ import visasReducer from './slices/visasSlice';
 import searchReducer from './slices/searchSlice';
 import authReducer from './slices/authSlice'
 import serviceReducer from './slices/serviceSlice'
+import pictureReducer from './slices/pictureSlice'
+import completeReducer from './slices/completeSlice'
+import appsReducer from './slices/appsSlice'
 
 const store = configureStore({
   reducer: {
@@ -11,6 +14,9 @@ const store = configureStore({
     search: searchReducer,
     auth: authReducer,
     service: serviceReducer,
+    images: pictureReducer,
+    requests: completeReducer,
+    apps: appsReducer
   },
 });
 
