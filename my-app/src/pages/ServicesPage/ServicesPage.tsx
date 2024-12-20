@@ -128,7 +128,7 @@ const servicePage: React.FC = () => {
                             <tr key={visa.pk}>
                                 <td style={{ verticalAlign: 'middle', fontSize: '20px', textAlign: "center" }}>
                                     <a href={visa.url || "http://127.0.0.1:9000/test/default_.png"} target="_blank" rel="noopener noreferrer" >
-                                        <img className="serv_pic" src={visa.url || "http://127.0.0.1:9000/test/default_.png"} style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '12px' }} />
+                                        <img className="serv_pic" src={visa.url || "http://127.0.0.1:9000/test/default_.png"} style={{ width: '170px', height: '170px', objectFit: 'cover', borderRadius: '12px' }} />
                                     </a>
                                 </td>
                                 <td style={{ verticalAlign: 'middle', fontSize: '20px', textAlign: "center" }}>{visa.type}</td>

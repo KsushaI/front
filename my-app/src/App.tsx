@@ -9,6 +9,8 @@ import AccountPage from "./pages/AccountPage"
 import TrollyPage from "./pages/TrollyPage"
 import AppsListPage from "./pages/AppsListPage"
 import ServicesPage from "./pages/ServicesPage"
+import Page403 from "./pages/Page403"
+import Page404 from "./pages/Page404"
 import { ROUTES } from "./Routes.tsx";
 import { useEffect } from 'react';
 import { invoke } from '@tauri-apps/api/core';
@@ -56,6 +58,8 @@ return (
       <Route path={`${ROUTES.ACC}/:id`} element={<AccountPage />} />
       <Route path={ROUTES.APPS} element={<AppsListPage />} />
       <Route path={ROUTES.SERVICES} element={<ServicesPage />} />
+      <Route path="*" element={<Page404 />} />
+      <Route path={ROUTES.PAGE403} element={<Page403 />} />
     </Routes>
   </BrowserRouter>
 )

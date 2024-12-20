@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import fetchVisas from './actions/fetchvisas'; // импортируйте ваше асинхронное действие
-import { api } from '../api'; // Adjust the import according to your API setup
+import fetchVisas from './actions/fetchvisas'; 
+import { api } from '../api'; 
 
 export interface Visa {
     pk: number;
     type: string;
     price: number;
     url: string;
-    status: string; // Added to reflect the response
-    description: string | null; // Can be null
-    creator: string | null; // Can be null
+    status: string; 
+    description: string | null; 
+    creator: string | null; 
 }
 
 export interface VisasResult {
@@ -36,7 +36,7 @@ interface Service {
     id: number;
     type: string;
     price: number;
-    // Add other properties as needed
+
 }
 
 
@@ -56,7 +56,7 @@ interface AddVisaPayload {
     status: string;
 }
 
-// Thunk to add a new visa
+
 export const addVisa = createAsyncThunk(
     'services/add',
     async (visaData: AddVisaPayload) => {
@@ -65,7 +65,7 @@ export const addVisa = createAsyncThunk(
     }
 );
 
-// Thunk to edit a service
+
 export const editService = createAsyncThunk(
     'services/edit',
     async ({ id, formData }: EditServicePayload) => {
@@ -74,7 +74,7 @@ export const editService = createAsyncThunk(
     }
 );
 
-// Thunk to delete a service
+
 export const deleteService = createAsyncThunk(
     'services/delete',
 
@@ -97,11 +97,11 @@ const serviceSlice = createSlice({
             })
             .addCase(fetchVisas.fulfilled, (state, action: PayloadAction<VisasResult>) => {
                 state.loading = false;
-                state.services = action.payload.services; // Загружаем данные о визах
+                state.services = action.payload.services; 
             })
             .addCase(fetchVisas.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.payload as string; // Записываем ошибку
+                state.error = action.payload as string; 
             })
             .addCase(editService.pending, (state) => {
                 state.loading = true;
@@ -109,7 +109,7 @@ const serviceSlice = createSlice({
             })
             .addCase(editService.fulfilled, (state, action: PayloadAction<Visa>) => {
                 state.loading = false;
-                // Update the service in the state
+              
                 const updatedService = action.payload;
                 state.services = state.services.map(service =>
                     service.pk === updatedService.pk ? updatedService : service
@@ -125,7 +125,7 @@ const serviceSlice = createSlice({
             })
             .addCase(addVisa.fulfilled, (state, action: PayloadAction<Visa>) => {
                 state.loading = false;
-                // Add the new visa to the state
+            
                 state.services.push(action.payload);
             })
             .addCase(addVisa.rejected, (state, action) => {
@@ -138,7 +138,7 @@ const serviceSlice = createSlice({
             })
             .addCase(deleteService.fulfilled, (state, action: PayloadAction<number>) => {
                 state.loading = false;
-                // Remove the service from the state based on the ID
+                
                 state.services = state.services.filter(service => service.pk !== action.payload);
             })
             .addCase(deleteService.rejected, (state, action) => {
@@ -149,5 +149,5 @@ const serviceSlice = createSlice({
 },
 );
 
-// Экспортируем редюсер
+
 export default serviceSlice.reducer;

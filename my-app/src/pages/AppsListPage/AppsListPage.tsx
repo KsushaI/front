@@ -2,12 +2,17 @@ import Header from "../Page1/components/Header";
 import Table from 'react-bootstrap/Table';
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form"
+import Dropdown from "react-bootstrap/Dropdown"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApps } from '../../slices/appsSlice'; // Adjust the path as necessary
 import { RootState, AppDispatch } from '../../store';
 import { api } from '../../api'
+import { useNavigate } from "react-router-dom";
+import { ROUTES} from "../../Routes";
 const AppsListPage = () => {
-    const { user } = useSelector((state: any) => state.auth);
+    const { isAuthenticated, user } = useSelector((state: any) => state.auth);
+    
     const dispatch = useDispatch<AppDispatch>();
     const { apps } = useSelector((state: RootState) => state.apps);
     const [reload, setReload] = useState(false);
@@ -17,6 +22,8 @@ const AppsListPage = () => {
         status: '',
         creator: ''
     });
+
+    const navigate = useNavigate()
 
     const creators = ['ksu', 'first', 'second', 'fifth', 'sixth', 'seventh', 'ninth'];
     
@@ -45,15 +52,16 @@ const AppsListPage = () => {
             dispatch(fetchApps({
                 start_date:  updatedFilters.start_date, 
                 end_date: updatedFilters.end_date, 
-                status: filters.status,
-                
+                status: filters.status,      
             }));
+            
         }
     };
 
-    const handleBackendFilterChange = () => {
+    const handleBackendFilterChange =  () => {
         // Отправляем запрос на сервер с остальными фильтрами
         dispatch(fetchApps(filters));
+        
     };
 
     // Фильтрация заявок на основе текущих фильтров
@@ -63,9 +71,13 @@ const AppsListPage = () => {
     });
 
     useEffect(() => {
-        const id = setTimeout(() => {
-            dispatch(fetchApps(filters));
+        const id = setTimeout(async () => {
+            const resultAction = await dispatch(fetchApps(filters));
+
            
+            if (fetchApps.rejected.match(resultAction) && resultAction.payload === 'FORBIDDEN') {
+                navigate(ROUTES.PAGE403); 
+            }
         }, 2000);
 
         return () => clearTimeout(id);
@@ -101,8 +113,15 @@ const AppsListPage = () => {
                 </select>
                 {/*<button onClick={handleBackendFilterChange}>Применить фильтры</button>*/}
             </div>
-
-            {apps && (
+            <div>
+            <Form.Select aria-label="Default select example">
+      <option>Все статусы</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </Form.Select></div>
+  
+            {apps && isAuthenticated && (
                 <Table striped bordered hover className="mt-2">
                     <thead>
                         <tr>

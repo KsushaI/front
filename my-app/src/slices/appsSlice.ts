@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
 import { api } from '../api';
 
 // Define the App interface
@@ -44,17 +45,35 @@ interface FetchAppsParams {
     status?: string;
 }
 
+interface ErrorResponse {
+    response?: {
+        status?: number;
+        data?: any; // Adjust this type based on your API response structure
+    };
+}
+
+
 // Define the thunk for fetching apps
 export const fetchApps = createAsyncThunk(
     'apps/fetchApps',
     async (params: FetchAppsParams, { rejectWithValue }) => {
+        
         try {
             const response = await api.appsApi.appsApiList({
-                query: params, // Pass the parameters to the API method
+                query: params,
             });
-            return response.data; // Return the data from the response
+
+            return response.data; // Return the data if successful
         } catch (error) {
-            return rejectWithValue(error.response.data);
+            // Type assertion to handle the error as ErrorResponse
+            const err = error as ErrorResponse;
+
+            // Check if the error has a response and status
+            if (err.response && err.response.status === 403) {
+                console.log('forbidden response received');
+                return rejectWithValue('FORBIDDEN'); // Reject with value for 403
+            }
+           
         }
     }
 );
@@ -63,7 +82,7 @@ export const fetchApps = createAsyncThunk(
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
     const response = await api.users.usersList();
     console.log(response.data)
-    return response.data; // Assuming this returns an array of User objects
+    return response.data; 
 });
 
 const appsSlice = createSlice({

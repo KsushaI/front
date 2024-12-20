@@ -65,7 +65,7 @@ const Navbar = () => {
                         to={ROUTES.SERVICES}
                         className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
                     >
-                        Услуги
+                        Список виз
                     </NavLink>
                 </Nav.Item>
             )}

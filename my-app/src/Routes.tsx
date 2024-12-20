@@ -6,7 +6,9 @@ export const ROUTES = {
     AUTH: "/auth",
     ACC: '/account',
     APPS: '/apps',
-    SERVICES: "/services"
+    SERVICES: "/services",
+    PAGE404: "/404",
+    PAGE403: "/403"
   }
   export type RouteKeyType = keyof typeof ROUTES;
   export const ROUTE_LABELS: {[key in RouteKeyType]: string} = {
@@ -17,5 +19,7 @@ export const ROUTES = {
     TROLLY: "Корзина",
     ACC: 'Личный кабинет',
     APPS: 'Мои заявки',
-    SERVICES: "Услуги"
+    SERVICES: "Услуги",
+    PAGE404: "404",
+    PAGE403: "403"
   };
